@@ -13,8 +13,11 @@ const milDecElement = document.getElementById('milDec');
 const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
+
 function printTime() {
   // ... your code goes here
+  //chronometer.start();
+  secDecElement.innerHTML = chronometer.currentTime;
 }
 
 function printMinutes() {
@@ -57,9 +60,13 @@ function setResetBtn() {
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
   // ... your code goes here
+  //printTime()
+  //console.log('Clicked!')
+  chronometer.start(printTime)
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
   // ... your code goes here
+  chronometer.stop()
 });
