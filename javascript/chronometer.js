@@ -31,7 +31,9 @@ class Chronometer {
 
   computeTwoDigitNumber(value) {
     // ... your code goes here
-    return value.toString().padStart(2, '0')
+    let formatValue = value.toString().padStart(2, '3');
+    console.log(formatValue);
+    return formatValue;
   }
 
   stop() {
