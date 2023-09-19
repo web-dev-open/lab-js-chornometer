@@ -114,13 +114,21 @@ body {
 
 .btn.start {
   background: #5fca5f;
+  font-size: 12px;
+  text-align: center;
 }
 .btn.stop {
   background: #f14949;
+  font-size: 12px;
+  text-align: center;
 }
 .btn.reset {
   background: #908e8e;
+  font-size: 12px;
+  text-align: center;
 }
 .btn.split {
   background: #0851ab;
+  font-size: 12px;
+  text-align: center;
 }
