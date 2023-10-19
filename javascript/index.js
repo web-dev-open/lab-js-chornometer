@@ -37,38 +37,48 @@ function printSeconds() {
 
 // ==> BONUS
 function printMilliseconds() {
-  const milliseconds = chronometer.computeTwoDigitNumber(chronometer.getSeconds() * 100); 
-  milDecElement.textContent = milliseconds[0];
-  milUniElement.textContent = milliseconds[1];
+  const milDecElement = document.getElementById('milDec');
+    const milUniElement = document.getElementById('milUni');
+    const { currentMilliseconds } = this;
+
+    milDecElement.textContent = this.computeTwoDigitNumber(Math.floor(currentMilliseconds / 10));
+    milUniElement.textContent = this.computeTwoDigitNumber(currentMilliseconds % 10);
 }
 
 function printSplit() {
-  const splitTime = chronometer.split(); // Get the formatted split time from the Chronometer class
+  const splitTime = chronometer.split(); 
   
-  // Create a new list item element
+  
   const splitItem = document.createElement('li');
-  splitItem.textContent = splitTime; // Set the content of the list item to the split time
+  splitItem.textContent = splitTime; 
   
-  // Append the list item to the splits ordered list
+  
   splitsElement.appendChild(splitItem);
 }
 
 function clearSplits() {
-  // Clear all the list items within the splits ordered list
+ 
   splitsElement.innerHTML = '';
 }
 
 function setStopBtn() {
-  // ... your code goes here
+  const btnLeftElement = document.getElementById('btnLeft');
+
+  
+  btnLeftElement.textContent = 'STOP';
+
+  
+  btnLeftElement.classList.remove('start');
+  btnLeftElement.classList.add('stop');
 }
 
 function setSplitBtn() {
   if (btnLeftElement.classList.contains('stop')) {
-    // If the chronometer is running, the button should display "SPLIT"
+   
     btnRightElement.textContent = 'SPLIT';
     btnRightElement.className = 'btn split';
   } else {
-    // If the chronometer is stopped, the button should display "RESET"
+    
     btnRightElement.textContent = 'RESET';
     btnRightElement.className = 'btn reset';
   }
@@ -76,11 +86,11 @@ function setSplitBtn() {
 
 function setStartBtn() {
   if (btnLeftElement.classList.contains('stop')) {
-    // If the chronometer is running, the button should display "STOP"
+   
     btnLeftElement.textContent = 'STOP';
     btnLeftElement.className = 'btn stop';
   } else {
-    // If the chronometer is stopped, the button should display "START"
+    
     btnLeftElement.textContent = 'START';
     btnLeftElement.className = 'btn start';
   }
@@ -88,11 +98,11 @@ function setStartBtn() {
 
 function setResetBtn() {
   if (btnLeftElement.classList.contains('stop')) {
-    // If the chronometer is running, the button should display "SPLIT"
+   
     btnRightElement.textContent = 'SPLIT';
     btnRightElement.className = 'btn split';
   } else {
-    // If the chronometer is stopped, the button should display "RESET"
+    
     btnRightElement.textContent = 'RESET';
     btnRightElement.className = 'btn reset';
 }
@@ -101,28 +111,28 @@ function setResetBtn() {
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
   if (btnLeftElement.classList.contains('start')) {
-    // If the button currently has the class 'start', it means we want to start the chronometer.
-    chronometer.start(printTime); // Start the chronometer and pass the printTime function as a callback
-    setStartBtn(); // Update the Start/Stop button
-    setResetBtn(); // Update the Reset/Split button
+    
+    chronometer.start(printTime); 
+    setStartBtn(); 
+    setResetBtn(); 
   } else {
-    // If the button has the class 'stop', it means we want to stop the chronometer.
-    chronometer.stop(); // Stop the chronometer
-    setStartBtn(); // Update the Start/Stop button
-    setResetBtn(); // Update the Reset/Split button
+   
+    chronometer.stop(); 
+    setStartBtn(); 
+    setResetBtn(); 
   }
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
   if (btnRightElement.classList.contains('reset')) {
-    // If the button currently has the class 'reset', it means we want to reset the chronometer.
-    chronometer.reset(); // Reset the chronometer
-    setResetBtn(); // Update the Reset/Split button
-    printTime(); // Clear the displayed time
-    clearSplits(); // Clear the displayed split times
+    
+    chronometer.reset(); 
+    setResetBtn(); 
+    printTime(); 
+    clearSplits(); 
   } else {
-    // If the button has the class 'split', it means we want to record a split time.
-    printSplit(); // Print the current split time
+    
+    printSplit(); 
   }
 });
