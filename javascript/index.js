@@ -13,16 +13,29 @@ const milDecElement = document.getElementById('milDec');
 const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
+
 function printTime() {
   // ... your code goes here
+  //chronometer.start();
+  secDecElement.innerHTML  = printSeconds() 
+  minDecElement.innerHTML = printMinutes()
+  //printMinutes()
 }
 
 function printMinutes() {
   // ... your code goes here
+  minUniElement.innerHTML = '';
+  let printTime = chronometer.minutes.toString()
+  //secDecElement.innerHTML = printTime.padStart(2,'0');
+  return printTime.padStart(2,'0');
 }
 
 function printSeconds() {
   // ... your code goes here
+  secUniElement.innerHTML = '';
+  let printTime = chronometer.currentTime.toString()
+  //secDecElement.innerHTML = printTime.padStart(2,'0');
+  return printTime.padStart(2,'0');
 }
 
 // ==> BONUS
@@ -55,11 +68,15 @@ function setResetBtn() {
 }
 
 // Start/Stop Button
-btnLeftElement.addEventListener('click', () => {
+btnLeftElement.addEventListener('click', (btn) => {
   // ... your code goes here
+  //printTime()
+  //console.log('Clicked!')
+  chronometer.start(printTime)
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
   // ... your code goes here
+  chronometer.stop()
 });
