@@ -63,3 +63,68 @@ btnLeftElement.addEventListener('click', () => {
 btnRightElement.addEventListener('click', () => {
   // ... your code goes here
 });
+document.addEventListener('DOMContentLoaded', () => {
+  const chronometer = new Chronometer();
+  let isRunning = false;
+
+  function updateButtons() {
+    const btnLeft = document.getElementById('btnLeft');
+    const btnRight = document.getElementById('btnRight');
+    
+    if (isRunning) {
+      btnLeft.innerHTML = 'START';
+      btnLeft.className = 'btn start';
+      btnRight.innerHTML = 'RESET';
+      btnRight.className = 'btn reset';
+    } else {
+      btnLeft.innerHTML = 'STOP';
+      btnLeft.className = 'btn stop';
+      btnRight.innerHTML = 'SPLIT';
+      btnRight.className = 'btn split';
+    }
+  }
+
+  function updateScreen(minutes, seconds) {
+    const minDigits = chronometer.computeTwoDigitNumber(minutes);
+    const secDigits = chronometer.computeTwoDigitNumber(seconds);
+
+    const timeDisplay = document.getElementById('time');
+    timeDisplay.innerHTML = `${minDigits}:${secDigits}`;
+  }
+
+  chronometer.start(() => {
+    if (isRunning) {
+      const minutes = chronometer.getMinutes();
+      const seconds = chronometer.getSeconds();
+      updateScreen(minutes, seconds);
+    }
+  });
+
+  document.getElementById('btnLeft').addEventListener('click', () => {
+    isRunning = !isRunning;
+    if (isRunning) {
+      chronometer.start();
+    } else {
+      chronometer.stop();
+    }
+    updateButtons();
+  });
+
+  document.getElementById('btnRight').addEventListener('click', () => {
+    if (isRunning) {
+      // Handle SPLIT functionality
+      // You can implement this logic here, e.g., display split times in a list
+      const splitsList = document.getElementById('splits');
+    const splitTime = chronometer.split();
+
+    const listItem = document.createElement('li');
+    listItem.className = 'list-item';
+    listItem.innerHTML = splitTime;
+
+    splitsList.appendChild(listItem);
+    } else {
+      chronometer.reset();
+      updateScreen(0, 0);
+    }
+  });
+});
