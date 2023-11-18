@@ -41,6 +41,11 @@ class Chronometer {
     return this.currentTime % 60;
   }
 
+  // Bonus Getting the MIlliseconfs
+  getMilliseconds() {
+    return this.currentTime % 1000;
+  }
+
   // Method to represent the numbers with two digits
   computeTwoDigitNumber(value) {
     // ... your code goes here
