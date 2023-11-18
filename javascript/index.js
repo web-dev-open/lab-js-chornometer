@@ -73,6 +73,18 @@ function clearSplits() {
   }
 }
 
+// Iteration No. 4 Reset.
+function clearAll() {
+
+  // Clears the clock
+  chronometer.reset();
+  printTime();
+
+  // Cleaning up the list
+  clearSplits();
+
+}
+
 function setStopBtn() {
   // ... your code goes here
 
@@ -126,9 +138,15 @@ btnRightElement.addEventListener('click', () => {
 
   if(btnRightElement.classList.contains("split")) {
     printSplit();
+
+  // Iteratio No. 4
+  } else if (!btnRightElement.classList.contains("split")) {
+    clearAll();
+  
   } else {
     chronometer.reset();
     clearSplits();
     printTime();
+
   }
 });
