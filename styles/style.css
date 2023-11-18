@@ -33,8 +33,8 @@ body {
   text-align: center;
   width: 220px;
   display:flex;
-  align-items:center;
-  justify-content:center;
+  align-items:start;
+  justify-content: center;
 }
 
 #splits-container {
@@ -52,7 +52,9 @@ body {
 #milliseconds {
   font-size: 36px;
   position: absolute;
-  top: 20px;
+  top: 100px;
+  right: 25px;
+ 
 }
 
 .leash {
