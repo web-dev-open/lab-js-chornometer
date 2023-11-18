@@ -17,7 +17,6 @@ class Chronometer {
       // Setting up the interval to update every second (1,000 milliseconds)
       this.intervalId = setInterval(() => {
         this.currentTime++; // This line increments by 1,000 miliseconds
-        this.printTime(); // Print the updated time
 
         // Verify if there's a callback and if yes, execute it
         if(callback && typeof callback === "function") {
@@ -51,7 +50,7 @@ class Chronometer {
     // ... your code goes here
 
     // Ternary Operator (I prefer this one since I can use the same logic in other programming languages)
-    return number < 10 ? `0${number}` : `${number}`;
+    return value < 10 ? `0${value}` : `${value}`;
 
     // With slice
     // return ("0" + number ).slice(-2);
@@ -86,6 +85,9 @@ class Chronometer {
     // Obtaining the split time
     const minutes = this.computeTwoDigitNumber(this.getMinutes());
     const seconds = this.computeTwoDigitNumber(this.getSeconds());
+
+    // Returning the formatted String
+    return `${minutes}:${seconds}`
   }
 }
 

@@ -122,7 +122,9 @@ btnLeftElement.addEventListener('click', () => {
   // ... your code goes here
 
   if(btnLeftElement.classList.contains("start")) {
-    chronometer.start(printTIme);
+    chronometer.start(() => {
+      printTime();
+    });
     setStartBtn();
     setSplitBtn();
   } else {
