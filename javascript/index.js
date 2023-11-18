@@ -43,13 +43,24 @@ function printMilliseconds() {
   milUniElement.textContent = milliseconds[1];
 }
 
+// Iteraration No. 3 Split Time
 function printSplit() {
   // ... your code goes here
 
   // Split the time
+  // Getting the current time
   const splitTime = chronometer.split();
+  
+  // Creating a new "li" Element
   const splitItem = document.createElement("li");
+  
+  // Adding a class name
+  splitItem.className = "list-item";
+
+  // Updating the HTML of the li element with the current time
   splitItem.textContent = splitTime;
+
+  // Appending the li element to the container
   splitsElement.appendChild(splitItem);
 }
 
