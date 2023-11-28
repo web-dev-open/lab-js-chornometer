@@ -15,6 +15,7 @@ const splitsElement = document.getElementById('splits');
 
 function printTime() {
   // ... your code goes here
+  chronometer.start();
   minDecElement.innerHTML = chronometer.computeTwoDigitNumber(chronometer.getMinutes())[0];
   minUniElement.innerHTML = chronometer.computeTwoDigitNumber(chronometer.getMinutes())[1];
   secDecElement.innerHTML = chronometer.computeTwoDigitNumber(chronometer.getSeconds())[0];
@@ -78,12 +79,7 @@ function setResetBtn() {
   chronometer.reset();
   clearSplits();
   printTime();
-  minDecElement.innerHTML = 0;
-  minUniElement.innerHTML = 0;
-  secDecElement.innerHTML = 0;
-  secUniElement.innerHTML = 0;
-  milDecElement.innerHTML = 0;
-  milUniElement.innerHTML = 0;
+
 }
 
 // Start/Stop Button
@@ -109,11 +105,9 @@ btnRightElement.addEventListener('click', () => {
   btnLeftElement.classList.toggle('stop');
   btnRightElement.classList.toggle('reset');
   btnRightElement.classList.toggle('split');
-  if (btnLeftElement.innerHTML === 'START') {
-    btnLeftElement.innerHTML = 'STOP';
-    btnRightElement.innerHTML = 'SPLIT';
+  if (btnRightElement.innerHTML === 'SPLIT') {
+    printSplit();
   } else {
-    btnLeftElement.innerHTML = 'START';
-    btnRightElement.innerHTML = 'RESET';
+    setResetBtn();
   }
 });
