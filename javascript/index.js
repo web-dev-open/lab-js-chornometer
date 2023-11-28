@@ -79,12 +79,11 @@ function setResetBtn() {
   btnRightElement.className = 'btn reset';  
   btnRightElement.innerHTML = 'RESET';
   }
-}
+
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
- if(btnLeftElement.classList.contains('start')) {
+  if(btnLeftElement.classList.contains('start')) {
     // If the "Start" button is clicked while chronometer is stopped
     //Start the chronometer
     chronometer.start(printTime);
@@ -98,6 +97,7 @@ btnLeftElement.addEventListener('click', () => {
     
     setStartBtn();
     setResetBtn();
+  }
 });
 
 // Reset/Split Button
