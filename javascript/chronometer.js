@@ -3,6 +3,9 @@ class Chronometer {
     // ... your code goes here
     let currentTime = 0;
     let intervalId = null;
+
+    this.currentTime = currentTime;
+    this.intervalId = intervalId;
   }
 
   start(callback) {

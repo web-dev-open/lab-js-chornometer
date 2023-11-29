@@ -22,61 +22,6 @@ function printTime() {
   document.getElementById(`secDec`).innerHTML = seconds.charAt(0);
   document.getElementById(`secUni`).innerHTML = seconds.charAt(1);
 }
-// btnLeftElement.addEventListener('click', () => {
-//   if (btnLeftElement.classList.contains('start')){
-//     chronometer.start(printTime);
-//     btnLeftElement.innerHTML = 'STOP';
-//     btnLeftElement.className = 'btn stop';
-//     btnRightElement.innerHTML = 'SPLIT';
-//     btnRightElement.className = 'btn split';
-//   }else{
-//     chronometer.stop();
-//     btnLeftElement.innerHTML = 'START';
-//     btnLeftElement.className = 'btn start';
-//     btnRightElement.innerHTML = 'RESET';
-//     btnRightElement.className = 'btn reset';
-//   }
-// });
-
-// btnRightElement.addEventListener('click', () => {
-//   if (btnRightElement.classList.contains('reset')){
-//     chronometer.reset();
-//     printTime();
-//   }else{
-//     const splitTime = chronometer.split();
-//     const splitList = document.getElementById('splits');
-//     const newSplit = document.createElement('li');
-//     newSplit.innerHTML = splitTime;
-//     splitList.appendChild(newSplit);
-//   }
-// });
-
-// btnRightElement.addEventListener('click', () => {
-//   if (btnRightElement.classList.contains('split')) {
-//     const splitTime = chronometer.split();
-//     const splitList = document.getElementById('splits');
-//     const newSplit = document.createElement('li');
-//     newSplit.innerHTML = splitTime;
-//     newSplit.className = 'list-item';
-//     splitList.appendChild(newSplit);
-//   }
-// });
-
-// btnRightElement.addEventListener('click', () => {
-//   if (btnRightElement.classList.contains('reset')) {
-//     chronometer.reset();
-//     document.getElementById('minDec').innerHTML = '0';
-//     document.getElementById('minUni').innerHTML = '0';
-//     document.getElementById('secDec').innerHTML = '0';
-//     document.getElementById('secUni').innerHTML = '0';
-//     const splitList = document.getElementById('splits');
-//     while (splitList.firstChild) {
-//       splitList.removeChild(splitList.firstChild);
-//     }
-//   }
-// });
-
-
 
 function printMinutes() {
   // ... your code goes here
