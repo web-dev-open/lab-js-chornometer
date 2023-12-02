@@ -2,6 +2,7 @@
   "name": "lab-javascript-chronometer",
   "version": "1.0.0",
   "license": "UNLICENSED",
+  "type": "commonjs",
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watchAll --verbose=false"
