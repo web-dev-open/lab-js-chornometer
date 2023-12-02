@@ -15,51 +15,35 @@ const splitsElement = document.getElementById('splits');
 
 function printTime() {
   // ... your code goes here
+  secDecElement.innerHTML  = printSeconds() 
+  minDecElement.innerHTML = printMinutes()
 }
 
 function printMinutes() {
   // ... your code goes here
+  minUniElement.innerHTML = '';
+  let printTime = chronometer.minutes.toString()
+  //secDecElement.innerHTML = printTime.padStart(2,'0');
+  return printTime.padStart(2,'0');
 }
 
 function printSeconds() {
   // ... your code goes here
+  secUniElement.innerHTML = '';
+  let printTime = chronometer.currentTime.toString()
+  //secDecElement.innerHTML = printTime.padStart(2,'0');
+  return printTime.padStart(2,'0');
 }
 
-// ==> BONUS
-function printMilliseconds() {
-  // ... your code goes here
-}
-
-function printSplit() {
-  // ... your code goes here
-}
-
-function clearSplits() {
-  // ... your code goes here
-}
-
-function setStopBtn() {
-  // ... your code goes here
-}
-
-function setSplitBtn() {
-  // ... your code goes here
-}
-
-function setStartBtn() {
-  // ... your code goes here
-}
-
-function setResetBtn() {
-  // ... your code goes here
-}
 
 // Start/Stop Button
-btnLeftElement.addEventListener('click', () => {
+btnLeftElement.addEventListener('click', (btn) => {
   // ... your code goes here
+  chronometer.start(printTime)
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
   // ... your code goes here
+  chronometer.stop()
 });
