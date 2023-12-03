@@ -1,39 +1,71 @@
 class Chronometer {
   constructor() {
-    // ... your code goes here
+    this.currentTime = 0;
+    this.intervalId = null;
+    this.millisecondsIntervalId = null;
   }
 
   start(callback) {
-    // ... your code goes here
+    this.intervalId = setInterval(() => {
+      this.currentTime++;
+      if (callback) {
+        callback();
+      }
+    }, 1000);
+
+    // Bonus: Uncomment the line below to show milliseconds
+    this.startMilliseconds(callback);
   }
 
   getMinutes() {
-    // ... your code goes here
+    return Math.floor(this.currentTime / 60);
   }
 
   getSeconds() {
-    // ... your code goes here
+    return this.currentTime % 60;
+  }
+
+  getMilliseconds() {
+    return (this.currentTime * 10) % 1000;
   }
 
   computeTwoDigitNumber(value) {
-    // ... your code goes here
+    return value < 10 ? '0' + value : value.toString();
   }
 
   stop() {
-    // ... your code goes here
+    clearInterval(this.intervalId);
+    // Bonus: Uncomment the line below to stop milliseconds
+    this.stopMilliseconds();
   }
 
   reset() {
-    // ... your code goes here
+    this.currentTime = 0;
+    // Bonus: Reset milliseconds if necessary
   }
 
   split() {
-    // ... your code goes here
+    const minutes = this.computeTwoDigitNumber(this.getMinutes());
+    const seconds = this.computeTwoDigitNumber(this.getSeconds());
+    const milliseconds = this.computeTwoDigitNumber(this.getMilliseconds());
+    return `${minutes}:${seconds}:${milliseconds}`;
+  }
+
+  // Bonus: Milliseconds functionality
+
+  startMilliseconds(callback) {
+    this.millisecondsIntervalId = setInterval(() => {
+      if (callback) {
+        callback();
+      }
+    }, 10);
+  }
+
+  stopMilliseconds() {
+    clearInterval(this.millisecondsIntervalId);
   }
 }
 
-// The following is required to make unit tests work.
-/* Environment setup. Do not modify the below code. */
 if (typeof module !== 'undefined') {
   module.exports = Chronometer;
 }
