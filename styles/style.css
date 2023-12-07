@@ -124,3 +124,13 @@ body {
 .btn.split {
   background: #0851ab;
 }
+
+#milliseconds-container {
+  display: flex;
+  align-items: center;
+  margin-left: 5px; 
+}
+
+#milliseconds-container .number {
+  font-size: 24px; 
+}
