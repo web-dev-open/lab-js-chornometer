@@ -1,39 +1,67 @@
 class Chronometer {
   constructor() {
-    // ... your code goes here
+    this.currentTime = 0;
+    this.intervalId = null;
   }
 
   start(callback) {
-    // ... your code goes here
+    if (!this.intervalId) {
+      this.intervalId = setInterval(() => {
+        this.currentTime++;
+        if (callback) {
+          callback();
+        }
+      }, 1000);
+    }
   }
 
   getMinutes() {
-    // ... your code goes here
+    return Math.floor(this.currentTime / 60);
   }
 
   getSeconds() {
-    // ... your code goes here
+    return this.currentTime % 60;
   }
 
-  computeTwoDigitNumber(value) {
-    // ... your code goes here
+  computeTwoDigitNumber(number) {
+    return number < 10 ? `0${number}` : `${number}`;
   }
 
   stop() {
-    // ... your code goes here
+    clearInterval(this.intervalId);
+    this.intervalId = null;
   }
 
   reset() {
-    // ... your code goes here
+    this.currentTime = 0;
+    // Reset values in your HTML file using .innerHTML
   }
 
   split() {
-    // ... your code goes here
+    const minutes = this.computeTwoDigitNumber(this.getMinutes());
+    const seconds = this.computeTwoDigitNumber(this.getSeconds());
+    return `${minutes}:${seconds}`;
   }
 }
 
+
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
-if (typeof module !== 'undefined') {
-  module.exports = Chronometer;
-}
+const chronometer = new Chronometer();
+
+// Start the chronometer
+chronometer.start(() => {
+  // Optional callback function to be executed every second
+  console.log(chronometer.split()); // Display formatted time
+});
+
+// Stop the chronometer after 5000 milliseconds (5 seconds)
+setTimeout(() => {
+  chronometer.stop();
+}, 5000);
+
+// Reset the chronometer after 10000 milliseconds (10 seconds)
+setTimeout(() => {
+  chronometer.reset();
+}, 10000);
+
