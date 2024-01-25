@@ -1,65 +1,86 @@
 class Chronometer {
+
   constructor() {
     // ... your code goes here
-    this.currentTime=0;
-    this.intervalId="null";
-    this.milliseconds = 0; 
+    // ... the constructor of class
+    this.currentTime = 0;
+    this.intervalId = null;
   }
 
   start(callback) {
     // ... your code goes here
-    const executeCallback = () => {
-      if (callback && typeof callback === 'function') {
-        callback();
-      }
-    };
+    // ... to start the chronometer
+    this.intervalId = setInterval(()=>{
+        this.currentTime++;
 
-    this.intervalId = setInterval(() => {
-      this.currentTime += 1;
-      
-      executeCallback();
-    }, 1000);
-  
+        if(callback){
+          callback();
+        }
+    },1000)
+
   }
+
   getMinutes() {
-    return Math.floor(this.currentTime / 60);
+    // ... your code goes here
+    // ... to get the current minutes
+    const minutes = Math.floor(this.currentTime/60);
+    return minutes;
   }
 
   getSeconds() {
-    return this.currentTime % 60;
-  }
-  
-  getMilliseconds() {
-    return this.milliseconds % 1000;
+    // ... your code goes here
+    // ... to get the current seconds
+    const seconds = (this.currentTime % 60 )
+    return seconds;
   }
 
-  computeTwoDigitNumber(number) {
-    return number.toString().padStart(2, '0');
+  getMilliseconds(){
+    //to get the miliseconds --> BONUS PART
+    const milisec = (this.currentTime % 1000);
+    return milisec;
+  }
+
+  computeTwoDigitNumber(value) {
+    // ... your code goes here
+    // ... converting singal digit number to double digit and return it as a string
+
+    var formattedNumber = ("0" + value).slice(-2);
+    const val = formattedNumber.toString();
+    return val;
   }
 
   stop() {
-    clearInterval(this.intervalId);
+    // ... your code goes here
+    // ... to stop the current timer
+
+
+      clearInterval(this.intervalId);
+     // this.intervalId = null;
+    
+
   }
 
   reset() {
+    // ... your code goes here
+    // ... to reset the current time to 0
     this.currentTime = 0;
-    this.milliseconds = 0; // Reset milliseconds
-    document.getElementById('minDec').innerHTML = '0';
-    document.getElementById('minUni').innerHTML = '0';
-    document.getElementById('secDec').innerHTML = '0';
-    document.getElementById('secUni').innerHTML = '0';
-    document.getElementById('milDec').innerHTML = '0';
-    document.getElementById('milUni').innerHTML = '0';
-    document.getElementById('splits').innerHTML = ''; 
+
   }
 
   split() {
-    const minutes = this.computeTwoDigitNumber(this.getMinutes());
-    const seconds = this.computeTwoDigitNumber(this.getSeconds());
-    return `${minutes}:${seconds}`;
+    // ... your code goes here
+    // ... spliting the running time 
+    const minute = this.getMinutes()
+    const minVal  = this.computeTwoDigitNumber(minute)
+
+    const second = this.getSeconds()
+    const secVal = this.computeTwoDigitNumber(second)
+
+    const formattedTime = `${minVal}:${secVal}`
+
+    return formattedTime;
   }
 }
-
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
 if (typeof module !== 'undefined') {
