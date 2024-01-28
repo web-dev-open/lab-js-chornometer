@@ -1,65 +1,43 @@
+// Import the Chronometer class
+const Chronometer = require('./chronometer.js');
+
+// Create a new instance of Chronometer
 const chronometer = new Chronometer();
 
-// get the buttons:
-const btnLeftElement = document.getElementById('btnLeft');
-const btnRightElement = document.getElementById('btnRight');
+// ... (previous code remains unchanged)
 
-// get the DOM elements that will serve us to display the time:
-const minDecElement = document.getElementById('minDec');
-const minUniElement = document.getElementById('minUni');
-const secDecElement = document.getElementById('secDec');
-const secUniElement = document.getElementById('secUni');
-const milDecElement = document.getElementById('milDec');
-const milUniElement = document.getElementById('milUni');
-const splitsElement = document.getElementById('splits');
-
-function printTime() {
-  // ... your code goes here
+// Function to update the UI with current time and milliseconds
+function updateUI() {
+  printMinutes();
+  printSeconds();
+  printMilliseconds();
 }
 
-function printMinutes() {
-  // ... your code goes here
-}
-
-function printSeconds() {
-  // ... your code goes here
-}
-
-// ==> BONUS
+// Print the milliseconds on the UI
 function printMilliseconds() {
-  // ... your code goes here
+  const milliseconds = chronometer.computeTwoDigitNumber(chronometer.getMilliseconds());
+  milDecElement.textContent = milliseconds[0];
+  milUniElement.textContent = milliseconds[1];
 }
 
+// Print the split time with milliseconds on the UI
 function printSplit() {
-  // ... your code goes here
+  const splitTime = chronometer.splitWithMilliseconds();
+  const listItem = document.createElement('li');
+  listItem.className = 'list-item';
+  listItem.textContent = splitTime;
+  splitsElement.appendChild(listItem);
 }
 
-function clearSplits() {
-  // ... your code goes here
-}
-
-function setStopBtn() {
-  // ... your code goes here
-}
-
-function setSplitBtn() {
-  // ... your code goes here
-}
-
-function setStartBtn() {
-  // ... your code goes here
-}
-
-function setResetBtn() {
-  // ... your code goes here
-}
-
-// Start/Stop Button
-btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
-});
-
-// Reset/Split Button
+// Reset the chronometer and clear milliseconds on button click
 btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
+  if (btnRightElement.classList.contains('split')) {
+    printSplit();
+  } else {
+    chronometer.reset();
+    chronometer.resetMilliseconds(); // Clear milliseconds
+    clearSplits();
+    printTime();
+  }
 });
+
